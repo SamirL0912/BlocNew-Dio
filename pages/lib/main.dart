@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pages/views/failed_view.dart';
 import 'package:pages/views/initial_view.dart';
 
 void main() {
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false, 
       theme: ThemeData(),
-      home: const InitialView(),
+      home: const FailedView(),
     );
   }
 }
