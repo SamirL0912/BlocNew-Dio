@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pages/cubit/home_cubit.dart';
+import 'package:pages/services/home_service.dart';
 import 'package:pages/views/home.dart';
 
 import 'bloc/crear_bloc.dart';
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (_) => BlocProvider(
-                    create: (_) => HomeCubit(),
+                    create: (_) => HomeCubit(HomeService()),
                     child: const HomeView(),
                   ),
                 ),

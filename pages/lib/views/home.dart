@@ -9,49 +9,47 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      // 👉 El cubit ahora recibe el service y carga la info
-      create: (_) => HomeCubit(HomeService())..cargarInfo(),
+      create: (_) => HomeCubit(HomeService())..cargarCristianoInfo(),
       child: Scaffold(
-        appBar: AppBar(title: const Text("Home")),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            // Imagen fija de internet
-            Image.network(
-              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2BnteNjfRG7gC9q9ihU3F3YE-lpzKES_Tcg&s",
-              height: 200,
-            ),
-            const SizedBox(height: 20),
+        appBar: AppBar(title: const Text("Cristiano Ronaldo")),
+        body: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const SizedBox(height: 20),
+              Image.network(
+                "https://www.hola.com/horizon/square/e48159e847bc-cristiano-ronaldo.jpg", 
+                height: 200,
+              ),
+              const SizedBox(height: 20),
+              BlocBuilder<HomeCubit, HomeState>(
+  builder: (context, state) {
+    if (state.loading) {
+      return const CircularProgressIndicator();
+    } else if (state.error != null) {
+      return Text(
+        "Error: ${state.error}",
+        style: const TextStyle(color: Colors.red),
+      );
+    } else {
+      return Text(
+        state.info,
+        style: const TextStyle(fontSize: 20),
+      );
+    }
+  },
+),
 
-            // Información que viene del Cubit
-            BlocBuilder<HomeCubit, HomeState>(
-              builder: (context, state) {
-                if (state.loading) {
-                  return const CircularProgressIndicator();
-                } else if (state.error != null) {
-                  return Text(
-                    "Error: ${state.error}",
-                    style: const TextStyle(color: Colors.red),
-                  );
-                }
-                return Text(
-                  state.info,
-                  style: const TextStyle(fontSize: 20),
-                  textAlign: TextAlign.center,
-                );
-              },
-            ),
+              const SizedBox(height: 20),
+              ElevatedButton(
+  onPressed: () {
+    context.read<HomeCubit>().cargarCristianoInfo();
+  },
+  child: const Text("Actualizar info"),
+)
 
-            const SizedBox(height: 20),
-
-            // Botón para recargar info desde la API
-            ElevatedButton(
-              onPressed: () {
-                context.read<HomeCubit>().cargarInfo();
-              },
-              child: const Text("Recargar info"),
-            )
-          ],
+            ],
+          ),
         ),
       ),
     );

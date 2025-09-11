@@ -8,7 +8,6 @@ class CrearBloc extends Bloc<CrearEvent, CrearState> {
       emit(CrearLoading());
       // Simulamos un proceso (ej: login, petición API, etc.)
       await Future.delayed(const Duration(seconds: 2));
-      // Aquí decides si va a Success o Failure
       final success = true; // puedes cambiarlo para probar
 
       if (success) {
