@@ -1,6 +1,14 @@
-part of 'crear_bloc.dart';
+import 'package:equatable/equatable.dart';
 
-@immutable
-sealed class CrearState {}
+abstract class CrearState extends Equatable {
+  @override
+  List<Object?> get props => [];
+}
 
-final class CrearInitial extends CrearState {}
+class CrearInitial extends CrearState {}
+
+class CrearLoading extends CrearState {}
+
+class CrearSuccess extends CrearState {}
+
+class CrearFailure extends CrearState {}

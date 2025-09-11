@@ -1,4 +1,8 @@
-part of 'crear_bloc.dart';
+import 'package:equatable/equatable.dart';
 
-@immutable
-sealed class CrearEvent {}
+abstract class CrearEvent extends Equatable {
+  @override
+  List<Object?> get props => [];
+}
+
+class CrearSubmitted extends CrearEvent {}

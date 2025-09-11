@@ -5,17 +5,13 @@ class FailedView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(Icons.error, size: 60, color: Colors.red),
-          SizedBox(height: 12),
-          Text(
-            "Error",
-            style: TextStyle(fontSize: 24, color: Colors.red),
-          ),
-        ],
+    return Scaffold(
+      appBar: AppBar(title: const Text("Error")),
+      body: const Center(
+        child: Text(
+          "Ha ocurrido un error",
+          style: TextStyle(fontSize: 20, color: Colors.red),
+        ),
       ),
     );
   }

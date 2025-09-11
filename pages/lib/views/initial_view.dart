@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../bloc/crear_bloc.dart';
+import '../bloc/crear_event.dart';
 
 class InitialView extends StatelessWidget {
   const InitialView({super.key});
@@ -6,32 +9,14 @@ class InitialView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Formulario")),
-      body: Padding(
-        padding: const EdgeInsets.all(19.0),
-        child: Column(
-          children: const [
-            TextField(
-              decoration: InputDecoration(
-                labelText: "Nombre",
-                border: OutlineInputBorder(),
-              ),
-            ),
-            SizedBox(height: 16),
-
-            TextField(
-              decoration: InputDecoration(
-                labelText: "Telefono",
-                border: OutlineInputBorder(),
-              ),
-            ),
-            SizedBox(height: 16),
-
-            ElevatedButton(
-              onPressed: null,
-              child: Text("Enviar"),
-            ),
-          ],
+      appBar: AppBar(title: const Text("Formulario Inicial")),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            // Cuando presionas, envías el evento al Bloc
+            context.read<CrearBloc>().add(CrearSubmitted());
+          },
+          child: const Text("Enviar"),
         ),
       ),
     );
