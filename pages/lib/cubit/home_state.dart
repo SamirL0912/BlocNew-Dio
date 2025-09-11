@@ -1,4 +1,5 @@
-part of 'home_cubit.dart';
+// part of 'home_cubit.dart';
+import 'package:flutter/widgets.dart';
 
 @immutable
 sealed class HomeState {}

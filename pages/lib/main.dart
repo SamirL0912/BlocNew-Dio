@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pages/cubit/home_cubit.dart';
+import 'package:pages/views/home.dart';
 
 import 'bloc/crear_bloc.dart';
 import 'bloc/crear_state.dart';
-import 'bloc/crear_event.dart';
+// import 'bloc/crear_event.dart';
 
 import 'views/initial_view.dart';
 import 'views/loading_view.dart';
