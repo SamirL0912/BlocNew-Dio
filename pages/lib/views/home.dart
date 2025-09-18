@@ -17,37 +17,36 @@ class HomeView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const SizedBox(height: 20),
+
+              // Imagen fija al inicio
               Image.network(
-                "https://www.hola.com/horizon/square/e48159e847bc-cristiano-ronaldo.jpg", 
+                "https://www.hola.com/horizon/square/e48159e847bc-cristiano-ronaldo.jpg",
                 height: 200,
               ),
+
               const SizedBox(height: 20),
+
+              // Aquí aparece cargando y luego la info
               BlocBuilder<HomeCubit, HomeState>(
-  builder: (context, state) {
-    if (state.loading) {
-      return const CircularProgressIndicator();
-    } else if (state.error != null) {
-      return Text(
-        "Error: ${state.error}",
-        style: const TextStyle(color: Colors.red),
-      );
-    } else {
-      return Text(
-        state.info,
-        style: const TextStyle(fontSize: 20),
-      );
-    }
-  },
-),
+                builder: (context, state) {
+                  if (state.loading) {
+                    return const CircularProgressIndicator();
+                  } else if (state.error != null) {
+                    return Text(
+                      "Error: ${state.error}",
+                      style: const TextStyle(color: Colors.red),
+                    );
+                  } else {
+                    return Text(
+                      state.info,
+                      style: const TextStyle(fontSize: 20),
+                      textAlign: TextAlign.center,
+                    );
+                  }
+                },
+              ),
 
               const SizedBox(height: 20),
-              ElevatedButton(
-  onPressed: () {
-    context.read<HomeCubit>().cargarCristianoInfo();
-  },
-  child: const Text("Actualizar info"),
-)
-
             ],
           ),
         ),
