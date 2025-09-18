@@ -8,15 +8,40 @@ class InitialView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final nameController = TextEditingController();
+    final passController = TextEditingController();
+
     return Scaffold(
       appBar: AppBar(title: const Text("Formulario Inicial")),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            // Cuando presionas, envías el evento al Bloc
-            context.read<CrearBloc>().add(CrearSubmitted());
-          },
-          child: const Text("Enviar"),
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TextField(
+              controller: nameController,
+              decoration: const InputDecoration(
+                labelText: "Nombre",
+                border: OutlineInputBorder(),
+              ),
+            ),
+            const SizedBox(height: 20),
+            TextField(
+              controller: passController,
+              obscureText: true,
+              decoration: const InputDecoration(
+                labelText: "Contraseña",
+                border: OutlineInputBorder(),
+              ),
+            ),
+            const SizedBox(height: 30),
+            ElevatedButton(
+              onPressed: () {
+                context.read<CrearBloc>().add(CrearSubmitted());
+              },
+              child: const Text("Enviar"),
+            ),
+          ],
         ),
       ),
     );

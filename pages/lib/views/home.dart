@@ -18,34 +18,34 @@ class HomeView extends StatelessWidget {
             children: [
               const SizedBox(height: 20),
 
-              // Imagen fija al inicio
               Image.network(
                 "https://www.hola.com/horizon/square/e48159e847bc-cristiano-ronaldo.jpg",
                 height: 200,
               ),
-
               const SizedBox(height: 20),
-
-              // Aquí aparece cargando y luego la info
               BlocBuilder<HomeCubit, HomeState>(
                 builder: (context, state) {
-                  if (state.loading) {
-                    return const CircularProgressIndicator();
-                  } else if (state.error != null) {
-                    return Text(
-                      "Error: ${state.error}",
-                      style: const TextStyle(color: Colors.red),
-                    );
-                  } else {
-                    return Text(
-                      state.info,
-                      style: const TextStyle(fontSize: 20),
-                      textAlign: TextAlign.center,
-                    );
-                  }
+                  return SizedBox(
+                    width: double.infinity,
+                    child: Center(
+                      child:
+                          state.loading
+                              ? const CircularProgressIndicator()
+                              : state.error != null
+                              ? Text(
+                                "Error: ${state.error}",
+                                style: const TextStyle(color: Colors.red),
+                                textAlign: TextAlign.center,
+                              )
+                              : Text(
+                                state.info,
+                                style: const TextStyle(fontSize: 20),
+                                textAlign: TextAlign.center,
+                              ),
+                    ),
+                  );
                 },
               ),
-
               const SizedBox(height: 20),
             ],
           ),

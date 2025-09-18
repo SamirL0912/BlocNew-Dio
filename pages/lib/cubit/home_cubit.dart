@@ -28,8 +28,7 @@ class HomeCubit extends Cubit<HomeState> {
     try {
       final bio = await service.fetchCristianoInfo();
 
-      // 👇 Delay artificial solo para la info
-      await Future.delayed(const Duration(seconds: 3));
+      await Future.delayed(const Duration(seconds: 1));
 
       emit(state.copyWith(info: bio, loading: false));
     } catch (e) {

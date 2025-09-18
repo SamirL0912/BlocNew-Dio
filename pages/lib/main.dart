@@ -37,10 +37,11 @@ class MyApp extends StatelessWidget {
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                  builder: (_) => BlocProvider(
-                    create: (_) => HomeCubit(HomeService()),
-                    child: const HomeView(),
-                  ),
+                  builder:
+                      (_) => BlocProvider(
+                        create: (_) => HomeCubit(HomeService()),
+                        child: const HomeView(),
+                      ),
                 ),
               );
             } else if (state is CrearFailure) {
