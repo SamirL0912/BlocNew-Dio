@@ -39,7 +39,7 @@ class InitialView extends StatelessWidget {
               onPressed: () {
                 context.read<CrearBloc>().add(CrearSubmitted());
               },
-              child: const Text("Enviar"),
+              child: const Text("Ingresar"),
             ),
           ],
         ),

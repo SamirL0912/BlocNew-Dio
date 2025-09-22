@@ -3,11 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pages/cubit/home_cubit.dart';
 import 'package:pages/services/home_service.dart';
 import 'package:pages/views/home.dart';
-
 import 'bloc/crear_bloc.dart';
 import 'bloc/crear_state.dart';
-// import 'bloc/crear_event.dart';
-
 import 'views/initial_view.dart';
 import 'views/loading_view.dart';
 import 'views/failed_view.dart';
@@ -34,7 +31,7 @@ class MyApp extends StatelessWidget {
                 MaterialPageRoute(builder: (_) => const LoadingView()),
               );
             } else if (state is CrearSuccess) {
-              Navigator.pushReplacement(
+              Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder:

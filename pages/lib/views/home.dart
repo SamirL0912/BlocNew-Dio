@@ -9,7 +9,7 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => HomeCubit(HomeService())..cargarCristianoInfo(),
+      create: (_) => HomeCubit(HomeService())..cargarCristianoBio(),
       child: Scaffold(
         appBar: AppBar(title: const Text("Cristiano Ronaldo")),
         body: SingleChildScrollView(
@@ -22,7 +22,9 @@ class HomeView extends StatelessWidget {
                 "https://www.hola.com/horizon/square/e48159e847bc-cristiano-ronaldo.jpg",
                 height: 200,
               ),
+
               const SizedBox(height: 20),
+
               BlocBuilder<HomeCubit, HomeState>(
                 builder: (context, state) {
                   return SizedBox(
@@ -46,6 +48,22 @@ class HomeView extends StatelessWidget {
                   );
                 },
               ),
+
+              const SizedBox(height: 20),
+
+              BlocBuilder<HomeCubit, HomeState>(
+                builder: (context, state) {
+                  return ElevatedButton(
+                    onPressed: () {
+                      context.read<HomeCubit>().alternarInfo();
+                    },
+                    child: Text(
+                      state.mostrandoBio ? "Ver Estadísticas" : "Ver Biografía",
+                    ),
+                  );
+                },
+              ),
+
               const SizedBox(height: 20),
             ],
           ),
