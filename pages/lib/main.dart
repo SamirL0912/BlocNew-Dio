@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pages/cubit/home_cubit.dart';
+import 'package:pages/services/dio_services.dart';
 import 'package:pages/services/home_service.dart';
 import 'package:pages/views/home.dart';
 import 'bloc/crear_bloc.dart';
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Bloc + Cubit Demo',
       home: BlocProvider(
-        create: (_) => CrearBloc(),
+        create: (_) => CrearBloc(DioService()),
         child: BlocListener<CrearBloc, CrearState>(
           listener: (context, state) {
             if (state is CrearLoading) {
@@ -31,18 +32,18 @@ class MyApp extends StatelessWidget {
                 MaterialPageRoute(builder: (_) => const LoadingView()),
               );
             } else if (state is CrearSuccess) {
-              Navigator.push(
+              Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
                   builder:
                       (_) => BlocProvider(
-                        create: (_) => HomeCubit(HomeService()),
+                        create: (_) => HomeCubit(HomeService(DioService())),
                         child: const HomeView(),
                       ),
                 ),
               );
             } else if (state is CrearFailure) {
-              Navigator.push(
+              Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(builder: (_) => const FailedView()),
               );

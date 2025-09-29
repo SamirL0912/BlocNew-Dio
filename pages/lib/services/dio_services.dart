@@ -2,44 +2,21 @@ import 'package:dio/dio.dart';
 
 class DioService {
   final Dio _dio = Dio();
-  final String url = "https://mocki.io/v1/bf738c54-8532-4229-a463-46b47d280283";
 
-  Future<String> fetchCristianoBio() async {
-    try {
-      final response = await _dio.get(url);
-      final data = response.data;
-
-      if (data is Map<String, dynamic> && data["bio"] != null) {
-        return """
-Nombre: ${data["bio"]["nombre"]}
-Edad: ${data["bio"]["edad"]}
-Nacionalidad: ${data["bio"]["nacionalidad"]}
-Equipo: ${data["bio"]["equipo"]}
-""";
-      } else {
-        return "Biografía no disponible";
-      }
-    } catch (e) {
-      return "Error al cargar biografía: $e";
-    }
+  Future<Response> get(String url) async {
+    return await _dio.get(url);
   }
 
-  Future<String> fetchCristianoStats() async {
+  Future<bool> login(String username, String password) async {
     try {
-      final response = await _dio.get(url);
-      final data = response.data;
+      final response = await _dio.post(
+        "https://mocki.io/v1/dc929232-b782-4c2b-91dc-cb7983022b9c",
+        data: {"username": username, "password": password},
+      );
 
-      if (data is Map<String, dynamic> && data["estadisticas"] != null) {
-        return """
-Goles: ${data["estadisticas"]["goles"]}
-Asistencias: ${data["estadisticas"]["asistencias"]}
-Partidos: ${data["estadisticas"]["partidos"]}
-""";
-      } else {
-        return "Estadísticas no disponibles";
-      }
+      return response.statusCode == 201;
     } catch (e) {
-      return "Error al cargar estadísticas: $e";
+      throw Exception("Error en login: $e");
     }
   }
 }

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pages/cubit/home_cubit.dart';
-import 'package:pages/services/home_service.dart';
+import 'package:pages/services/dio_services.dart';
+import '../cubit/home_cubit.dart';
+import '../cubit/home_state.dart';
+import '../services/home_service.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -9,7 +11,7 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => HomeCubit(HomeService())..cargarCristianoBio(),
+      create: (_) => HomeCubit(HomeService(DioService()))..cargarCristianoBio(),
       child: Scaffold(
         appBar: AppBar(title: const Text("Cristiano Ronaldo")),
         body: SingleChildScrollView(

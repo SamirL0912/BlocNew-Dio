@@ -11,4 +11,10 @@ class CrearLoading extends CrearState {}
 
 class CrearSuccess extends CrearState {}
 
-class CrearFailure extends CrearState {}
+class CrearFailure extends CrearState {
+  final String message;
+  CrearFailure({this.message = "Ha ocurrido un error"});
+
+  @override
+  List<Object?> get props => [message];
+}
