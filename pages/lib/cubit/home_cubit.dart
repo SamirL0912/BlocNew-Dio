@@ -24,7 +24,7 @@ class HomeCubit extends Cubit<HomeState> {
       if (username == data["username"] && password == data["password"]) {
         emit(HomeSuccess(
           username: data["username"] ?? "",
-          password: data["phone"] ?? "",
+          password: data["password"] ?? "",
         ));
       } else {
         emit(HomeFailure("Usuario o contraseña incorrectos"));

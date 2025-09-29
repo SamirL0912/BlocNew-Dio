@@ -8,7 +8,6 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final Dio dio = Dio();
 
   LoginBloc() : super(LoginInitial()) {
-    // Escuchar el evento LoginSubmitted
     on<LoginSubmitted>((event, emit) async {
       emit(LoginLoading());
 
