@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pages/cubit/home_cubit.dart';
-import 'package:pages/services/dio_services.dart';
-import 'package:pages/services/home_service.dart';
-import 'package:pages/views/home.dart';
-import 'bloc/crear_bloc.dart';
-import 'bloc/crear_state.dart';
-import 'views/initial_view.dart';
-import 'views/loading_view.dart';
-import 'views/failed_view.dart';
+import 'package:pages/views/failed_view.dart';
+import 'package:pages/views/initial_view.dart';
+import 'package:pages/views/loading_view.dart';
+import 'package:pages/views/success_view.dart';
+import 'bloc/login_bloc.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,37 +15,29 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Bloc + Cubit Demo',
-      home: BlocProvider(
-        create: (_) => CrearBloc(DioService()),
-        child: BlocListener<CrearBloc, CrearState>(
+    return BlocProvider(
+      create: (context) => LoginBloc(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: BlocConsumer<LoginBloc, LoginState>(
           listener: (context, state) {
-            if (state is CrearLoading) {
+            if (state is LoginSuccess) {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (_) => const LoadingView()),
-              );
-            } else if (state is CrearSuccess) {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  builder:
-                      (_) => BlocProvider(
-                        create: (_) => HomeCubit(HomeService(DioService())),
-                        child: const HomeView(),
-                      ),
-                ),
-              );
-            } else if (state is CrearFailure) {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (_) => const FailedView()),
+                MaterialPageRoute(builder: (context) => SuccessView()),
               );
             }
           },
-          child: const InitialView(),
+          builder: (context, state) {
+            if (state is LoginInitial) {
+              return const InicialView();
+            } else if (state is LoginLoading) {
+              return const LoadingView();
+            } else if (state is LoginFailure) {
+              return const FailureView();
+            }
+            return const InicialView();
+          },
         ),
       ),
     );

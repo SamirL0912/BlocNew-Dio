@@ -1,16 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pages/views/initial_view.dart';
+import '../bloc/login_bloc.dart';
 
-class FailedView extends StatelessWidget {
-  const FailedView({super.key});
+class FailureView extends StatelessWidget {
+  const FailureView({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final state = context.watch<LoginBloc>().state as LoginFailure;
+
     return Scaffold(
       appBar: AppBar(title: const Text("Error")),
-      body: const Center(
-        child: Text(
-          "Ha ocurrido un error",
-          style: TextStyle(fontSize: 20, color: Colors.red),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(state.message, style: const TextStyle(color: Colors.red)),
+            const SizedBox(height: 20),
+            ElevatedButton(
+            onPressed: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const InicialView()),
+              );
+            },
+            child: const Text("Reintentar"),
+          ),
+          ],
         ),
       ),
     );

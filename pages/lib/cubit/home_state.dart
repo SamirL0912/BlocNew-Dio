@@ -1,27 +1,22 @@
-class HomeState {
-  final bool loading;
-  final String info;
-  final String? error;
-  final bool mostrandoBio;
+part of 'home_cubit.dart';
 
-  HomeState({
-    this.loading = false,
-    this.info = '',
-    this.error,
-    this.mostrandoBio = true,
+abstract class HomeState {}
+
+class HomeInitial extends HomeState {}
+
+class HomeLoading extends HomeState  {}
+
+class HomeSuccess extends HomeState {
+  final String username;
+  final String password;
+
+  HomeSuccess({
+    required this.username,
+    required this.password,
   });
+}
 
-  HomeState copyWith({
-    bool? loading,
-    String? info,
-    String? error,
-    bool? mostrandoBio,
-  }) {
-    return HomeState(
-      loading: loading ?? this.loading,
-      info: info ?? this.info,
-      error: error,
-      mostrandoBio: mostrandoBio ?? this.mostrandoBio,
-    );
-  }
+class HomeFailure extends HomeState {
+  final String message;
+  HomeFailure(this.message);
 }

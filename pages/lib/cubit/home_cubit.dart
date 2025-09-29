@@ -1,37 +1,36 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'home_state.dart';
-import '../services/home_service.dart';
+import 'package:bloc/bloc.dart';
+import 'package:dio/dio.dart';
+
+part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
-  final HomeService _service;
+  final Dio dio = Dio();
 
-  HomeCubit(this._service) : super(HomeState());
+  HomeCubit() : super(HomeInitial());
 
-  Future<void> cargarCristianoBio() async {
-    emit(state.copyWith(loading: true, error: null));
+  Future<void> login(String username, String password) async {
+    emit(HomeLoading());
     try {
-      final bio = await _service.getCristianoBio();
-      emit(state.copyWith(loading: false, info: bio, mostrandoBio: true));
-    } catch (e) {
-      emit(state.copyWith(loading: false, error: e.toString()));
-    }
-  }
+      final response = await dio.post(
+        "https://mocki.io/v1/43abbc03-5e35-4f2c-bc24-a7dcccea9911",
+        data: {
+          "username": username,
+          "password": password,
+        },
+      );
 
-  Future<void> cargarCristianoStats() async {
-    emit(state.copyWith(loading: true, error: null));
-    try {
-      final stats = await _service.getCristianoStats();
-      emit(state.copyWith(loading: false, info: stats, mostrandoBio: false));
-    } catch (e) {
-      emit(state.copyWith(loading: false, error: e.toString()));
-    }
-  }
+      final data = response.data;
 
-  void alternarInfo() {
-    if (state.mostrandoBio) {
-      cargarCristianoStats();
-    } else {
-      cargarCristianoBio();
+      if (username == data["username"] && password == data["password"]) {
+        emit(HomeSuccess(
+          username: data["username"] ?? "",
+          password: data["phone"] ?? "",
+        ));
+      } else {
+        emit(HomeFailure("Usuario o contraseña incorrectos"));
+      }
+    } catch (e) {
+      emit(HomeFailure("Error en la conexión: $e"));
     }
   }
 }
