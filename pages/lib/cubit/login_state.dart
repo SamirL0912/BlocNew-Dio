@@ -1,4 +1,4 @@
-part of 'login_bloc.dart';
+part of 'login_cubit.dart';
 
 abstract class LoginState {}
 
@@ -8,14 +8,9 @@ class LoginLoading extends LoginState {}
 
 class LoginSuccess extends LoginState {
   final String username;
-  final String email;
-  final String phone;
+  final String password;
 
-  LoginSuccess({
-    required this.username,
-    required this.email,
-    required this.phone,
-  });
+  LoginSuccess({required this.username, required this.password});
 }
 
 class LoginFailure extends LoginState {

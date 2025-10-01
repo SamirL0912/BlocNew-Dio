@@ -4,7 +4,7 @@ import 'package:pages/views/failed_view.dart';
 import 'package:pages/views/initial_view.dart';
 import 'package:pages/views/loading_view.dart';
 import 'package:pages/views/success_view.dart';
-import 'bloc/login_bloc.dart';
+import 'bloc/home_bloc.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,12 +16,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => LoginBloc(),
+      create: (context) => HomeBloc(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: BlocConsumer<LoginBloc, LoginState>(
+        home: BlocConsumer<HomeBloc, HomeState>(
           listener: (context, state) {
-            if (state is LoginSuccess) {
+            if (state is HomeSuccess) {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => SuccessView()),
@@ -29,11 +29,11 @@ class MyApp extends StatelessWidget {
             }
           },
           builder: (context, state) {
-            if (state is LoginInitial) {
+            if (state is HomeInitial) {
               return const InicialView();
-            } else if (state is LoginLoading) {
+            } else if (state is HomeLoading) {
               return const LoadingView();
-            } else if (state is LoginFailure) {
+            } else if (state is HomeFailure) {
               return const FailureView();
             }
             return const InicialView();

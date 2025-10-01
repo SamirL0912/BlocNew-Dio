@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../bloc/login_bloc.dart';
-
+import '../bloc/home_bloc.dart';
 
 class InicialView extends StatefulWidget {
   const InicialView({super.key});
@@ -34,15 +33,15 @@ class InicialViewState extends State<InicialView> {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                context.read<LoginBloc>().add(
-                      LoginSubmitted(
-                        username: _userController.text,
-                        password: _passController.text,
-                      ),
-                    );
+                context.read<HomeBloc>().add(
+                  HomeSubmitted(
+                    username: _userController.text,
+                    password: _passController.text,
+                  ),
+                );
               },
               child: const Text("Ingresar"),
-            )
+            ),
           ],
         ),
       ),
