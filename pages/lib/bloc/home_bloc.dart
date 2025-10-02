@@ -13,9 +13,11 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
       try {
         final response = await dio.get(
-          "https://mocki.io/v1/bc56fb38-e3ad-4c8c-a8a6-a05e0eb15a1d",
+          "https://mocki.io/v1/4ba4ef1e-1121-44ce-b2ec-43d8236507cd",
         );
         final data = response.data;
+
+        await Future.delayed(const Duration(seconds: 3));
 
         emit(
           HomeSuccess(
