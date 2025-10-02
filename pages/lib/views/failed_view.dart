@@ -1,22 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pages/views/initial_view.dart';
-import '../bloc/home_bloc.dart';
 
 class FailureView extends StatelessWidget {
-  const FailureView({super.key});
+  final String message;
+
+  const FailureView({super.key, required this.message});
 
   @override
   Widget build(BuildContext context) {
-    final state = context.watch<HomeBloc>().state as HomeFailure;
-
     return Scaffold(
       appBar: AppBar(title: const Text("Error")),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(state.message, style: const TextStyle(color: Colors.red)),
+            Text(message, style: const TextStyle(color: Colors.red)),
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {

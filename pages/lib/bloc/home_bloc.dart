@@ -8,27 +8,22 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final Dio dio = Dio();
 
   HomeBloc() : super(HomeInitial()) {
-    on<HomeSubmitted>((event, emit) async {
+    on<LoadStats>((event, emit) async {
       emit(HomeLoading());
 
       try {
         final response = await dio.get(
-          "https://mocki.io/v1/f910195d-e81f-48fe-80f6-5f929db299fb",
+          "https://mocki.io/v1/bc56fb38-e3ad-4c8c-a8a6-a05e0eb15a1d",
         );
         final data = response.data;
 
-        if (event.username == data["username"] &&
-            event.password == data["password"]) {
-          emit(
-            HomeSuccess(
-              username: data["username"],
-              email: data["email"],
-              phone: data["phone"],
-            ),
-          );
-        } else {
-          emit(HomeFailure("Usuario o contraseña incorrectos"));
-        }
+        emit(
+          HomeSuccess(
+            partidos: data["partidos"],
+            goles: data["goles"],
+            asistencias: data["asistencias"],
+          ),
+        );
       } catch (e) {
         emit(HomeFailure("Error en la conexión: $e"));
       }

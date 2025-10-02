@@ -7,14 +7,14 @@ class HomeInitial extends HomeState {}
 class HomeLoading extends HomeState {}
 
 class HomeSuccess extends HomeState {
-  final String username;
-  final String email;
-  final String phone;
+  final int partidos;
+  final int goles;
+  final int asistencias;
 
   HomeSuccess({
-    required this.username,
-    required this.email,
-    required this.phone,
+    required this.partidos,
+    required this.goles,
+    required this.asistencias,
   });
 }
 

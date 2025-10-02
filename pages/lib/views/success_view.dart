@@ -10,27 +10,45 @@ class SuccessView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text("Bloc+Dio")),
       body: Center(
-        child: BlocBuilder<HomeBloc, HomeState>(
-          builder: (context, state) {
-            if (state is HomeLoading) {
-              return const CircularProgressIndicator();
-            } else if (state is HomeSuccess) {
-              return Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(state.username, style: const TextStyle(fontSize: 20)),
-                  Text(state.email, style: const TextStyle(fontSize: 20)),
-                  Text(state.phone, style: const TextStyle(fontSize: 20)),
-                ],
-              );
-            } else if (state is HomeFailure) {
-              return Text(
-                "Error: ${state.message}",
-                style: const TextStyle(color: Colors.red),
-              );
-            }
-            return const Text("Esperando datos...");
-          },
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.network(
+              "https://www.hola.com/horizon/square/e48159e847bc-cristiano-ronaldo.jpg",
+              height: 200,
+            ),
+            const SizedBox(height: 20),
+            BlocBuilder<HomeBloc, HomeState>(
+              builder: (context, state) {
+                if (state is HomeInitial || state is HomeLoading) {
+                  return const CircularProgressIndicator();
+                } else if (state is HomeSuccess) {
+                  return Column(
+                    children: [
+                      Text(
+                        "Partidos: ${state.partidos}",
+                        style: const TextStyle(fontSize: 20),
+                      ),
+                      Text(
+                        "Goles: ${state.goles}",
+                        style: const TextStyle(fontSize: 20),
+                      ),
+                      Text(
+                        "Asistencias: ${state.asistencias}",
+                        style: const TextStyle(fontSize: 20),
+                      ),
+                    ],
+                  );
+                } else if (state is HomeFailure) {
+                  return Text(
+                    "Error: ${state.message}",
+                    style: const TextStyle(color: Colors.red),
+                  );
+                }
+                return const SizedBox();
+              },
+            ),
+          ],
         ),
       ),
     );
