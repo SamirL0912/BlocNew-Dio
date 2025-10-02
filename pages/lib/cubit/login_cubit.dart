@@ -19,8 +19,6 @@ class LoginCubit extends Cubit<LoginState> {
 
       final data = response.data;
 
-      await Future.delayed(const Duration(seconds: 5));
-
       if (data["username"] == username && data["password"] == password) {
         emit(
           LoginSuccess(username: data["username"], password: data["password"]),
