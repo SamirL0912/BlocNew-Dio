@@ -26,7 +26,7 @@ class SuccessView extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Imagen con bordes redondeados
+
             ClipRRect(
               borderRadius: BorderRadius.circular(15),
               child: Image.network(
@@ -37,7 +37,6 @@ class SuccessView extends StatelessWidget {
             ),
             const SizedBox(height: 30),
 
-            // Stats juntas en un contenedor
             BlocBuilder<HomeBloc, HomeState>(
               builder: (context, state) {
                 if (state is HomeInitial || state is HomeLoading) {

@@ -18,7 +18,6 @@ class InicialViewState extends State<InicialView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // Fondo bonito con degradado
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
@@ -75,7 +74,6 @@ class InicialViewState extends State<InicialView> {
                       ),
                     ),
                     const SizedBox(height: 40),
-                    // TextField usuario
                     TextField(
                       controller: _userController,
                       style: const TextStyle(color: Colors.white),
@@ -92,7 +90,6 @@ class InicialViewState extends State<InicialView> {
                       ),
                     ),
                     const SizedBox(height: 20),
-                    // TextField contraseña
                     TextField(
                       controller: _passController,
                       obscureText: true,
@@ -110,7 +107,6 @@ class InicialViewState extends State<InicialView> {
                       ),
                     ),
                     const SizedBox(height: 30),
-                    // Botón login
                     SizedBox(
                       width: double.infinity,
                       height: 50,
