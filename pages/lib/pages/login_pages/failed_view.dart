@@ -48,15 +48,12 @@ class FailureView extends StatelessWidget {
                 onPressed: () {
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => const InicialView()),
+                    MaterialPageRoute(
+                      builder: (context) => const InicialView(),
+                    ),
                   );
                 },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.red.shade500,
-                  foregroundColor: Colors.white,
-                  padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
-                ),
-                child: const Text("Reintentar"),
+                child: const Text("Volver al inicio"),
               ),
             ],
           ),
