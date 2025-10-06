@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pages/pages/login_pages/failed_view.dart';
+import 'package:pages/pages/cubit/login_cubit.dart';
+import 'package:pages/views/failed_view.dart';
 import '../pages/login_pages/cubit/login_cubit.dart';
 import '../bloc/home_bloc.dart';
 import 'success_view.dart';

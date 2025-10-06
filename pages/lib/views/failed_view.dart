@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pages/pages/login_pages/initial_view.dart';
+import 'package:pages/views/initial_view.dart';
 
 class FailureView extends StatelessWidget {
   final String message;
