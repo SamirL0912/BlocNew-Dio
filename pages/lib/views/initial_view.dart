@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pages/views/failed_view.dart';
 import '../cubit/login_cubit.dart';
 import '../bloc/home_bloc.dart';
 import 'success_view.dart';
@@ -35,9 +36,12 @@ class InicialViewState extends State<InicialView> {
                   ),
                 );
               } else if (state is LoginFailure) {
-                ScaffoldMessenger.of(
+                Navigator.push(
                   context,
-                ).showSnackBar(SnackBar(content: Text(state.message)));
+                  MaterialPageRoute(
+                    builder: (_) => FailureView(message: state.message),
+                  ),
+                );
               }
             },
             builder: (context, state) {
