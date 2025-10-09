@@ -8,9 +8,7 @@ class LoginLoading extends LoginState {}
 
 class LoginSuccess extends LoginState {
   final String username;
-  final String password;
-
-  LoginSuccess({required this.username, required this.password});
+  LoginSuccess({required this.username});
 }
 
 class LoginFailure extends LoginState {

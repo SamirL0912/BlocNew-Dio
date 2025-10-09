@@ -1,24 +1,16 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:dio/dio.dart';
-
+import 'package:pages/pages/home%20pages/services/home_services.dart';
 part 'home_event.dart';
 part 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
-  final Dio dio = Dio();
+  final HomeService _service;
 
-  HomeBloc() : super(HomeInitial()) {
+  HomeBloc(this._service) : super(HomeInitial()) {
     on<LoadStats>((event, emit) async {
       emit(HomeLoading());
-
       try {
-        final response = await dio.get(
-          "https://mocki.io/v1/4ba4ef1e-1121-44ce-b2ec-43d8236507cd",
-        );
-        final data = response.data;
-
-        await Future.delayed(const Duration(seconds: 3));
-
+        final data = await _service.getStats();
         emit(
           HomeSuccess(
             partidos: data["partidos"],
