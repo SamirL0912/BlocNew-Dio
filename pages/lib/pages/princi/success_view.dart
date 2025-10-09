@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pages/pages/home%20pages/bloc/home_event.dart';
-import 'package:pages/pages/home%20pages/bloc/home_state.dart';
-import 'package:pages/pages/home%20pages/services/home_services.dart';
+import 'package:pages/pages/princi/bloc/home_event.dart';
+import 'package:pages/pages/princi/bloc/home_state.dart';
+import 'package:pages/pages/princi/services/home_services.dart';
 import 'bloc/home_bloc.dart';
 import 'widgets/loading_home.dart';
 import 'widgets/failure_home.dart';

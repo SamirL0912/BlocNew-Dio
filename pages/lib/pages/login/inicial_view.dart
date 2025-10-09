@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pages/pages/login pages/services/api_services.dart';
-import 'package:pages/pages/login pages/widgets/initial_view.dart';
+import 'package:pages/pages/login/services/api_services.dart';
+import 'package:pages/pages/login/widgets/initial_view.dart';
 import 'cubit/login_cubit.dart';
-import '../home pages/success_view.dart' as home;
+import '../princi/success_view.dart' as home;
 import 'widgets/failed_view.dart';
 import 'widgets/loading_view.dart';
 
