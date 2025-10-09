@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pages/pages/home%20pages/bloc/home_event.dart';
+import 'package:pages/pages/home%20pages/bloc/home_state.dart';
 import 'package:pages/pages/home%20pages/services/home_services.dart';
 import 'bloc/home_bloc.dart';
 import 'widgets/loading_home.dart';
@@ -14,22 +16,41 @@ class SuccessView extends StatelessWidget {
     return BlocProvider(
       create: (_) => HomeBloc(HomeService())..add(LoadStats()),
       child: Scaffold(
-        appBar: AppBar(title: const Text("Estadísticas de Cristiano")),
-        body: BlocBuilder<HomeBloc, HomeState>(
-          builder: (context, state) {
-            if (state is HomeLoading || state is HomeInitial) {
-              return const LoadingHome();
-            } else if (state is HomeFailure) {
-              return FailureHome(message: state.message);
-            } else if (state is HomeSuccess) {
-              return SuccessHome(
-                partidos: state.partidos,
-                goles: state.goles,
-                asistencias: state.asistencias,
-              );
-            }
-            return const SizedBox();
-          },
+        appBar: AppBar(
+          title: const Text("Cristiano Dos Santos Aveiro"),
+          centerTitle: true,
+          backgroundColor: Colors.blueAccent,
+        ),
+        body: Column(
+          children: [
+            // 🔹 Imagen que aparece al instante
+            const SizedBox(height: 40),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(16),
+              child: Image.network(
+                'https://s3.abcstatics.com/media/deportes/2018/07/10/cristiano-ronaldo-kNlH--620x349@abc.jpg',
+                height: 250,
+                fit: BoxFit.cover,
+              ),
+            ),
+
+            // 🔹 El Bloc solo controla la parte de la info (SuccessHome, Loading, Error)
+            Expanded(
+              child: BlocBuilder<HomeBloc, HomeState>(
+                builder: (context, state) {
+                  if (state is HomeLoading || state is HomeInitial) {
+                    return const LoadingHome();
+                  } else if (state is HomeFailure) {
+                    return FailureHome(message: state.message);
+                  } else if (state is HomeSuccess) {
+                    return SuccessHome(
+                    );
+                  }
+                  return const SizedBox();
+                },
+              ),
+            ),
+          ],
         ),
       ),
     );

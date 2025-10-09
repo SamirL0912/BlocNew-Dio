@@ -9,7 +9,7 @@ class LoginService {
       data: {"username": username, "password": password},
     );
 
-    await Future.delayed(const Duration(seconds: 2)); // Simular retardo
+    await Future.delayed(const Duration(seconds: 2));
 
     if (response.statusCode == 201 || response.statusCode == 200) {
       final data = response.data;
