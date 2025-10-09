@@ -16,115 +16,91 @@ class _InitialLoginViewState extends State<InitialLoginView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[50],
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(24.0),
+          padding: const EdgeInsets.all(20.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Icon(
                 Icons.lock_outline,
-                size: 80,
-                color: Colors.blueAccent,
+                size: 64,
+                color: Colors.blue,
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 20),
               const Text(
                 'Iniciar Sesión',
                 style: TextStyle(
-                  fontSize: 28,
+                  fontSize: 24,
                   fontWeight: FontWeight.bold,
-                  color: Colors.black87,
+                  color: Colors.black,
                 ),
               ),
-              const SizedBox(height: 8),
+              const SizedBox(height: 10),
               Text(
-                'Ingresa tus credenciales para continuar',
+                'Ingresa tus credenciales',
                 style: TextStyle(
                   fontSize: 16,
                   color: Colors.grey[600],
                 ),
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 40),
+              const SizedBox(height: 30),
               
-              Card(
-                elevation: 8,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(24.0),
-                  child: Column(
-                    children: [
-                      TextField(
-                        controller: _userController,
-                        decoration: InputDecoration(
-                          labelText: "Usuario",
-                          prefixIcon: const Icon(Icons.person_outline, color: Colors.blueAccent),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12),
-                            borderSide: const BorderSide(color: Colors.blueAccent, width: 2),
-                          ),
-                          filled: true,
-                          fillColor: Colors.grey[50],
-                        ),
+              Column(
+                children: [
+                  TextField(
+                    controller: _userController,
+                    decoration: const InputDecoration(
+                      labelText: "Usuario",
+                      prefixIcon: Icon(Icons.person_outline, color: Colors.blue),
+                      border: OutlineInputBorder(),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.blue, width: 2),
                       ),
-                      const SizedBox(height: 20),
-                      
-                      TextField(
-                        controller: _passController,
-                        obscureText: true,
-                        decoration: InputDecoration(
-                          labelText: "Contraseña",
-                          prefixIcon: const Icon(Icons.lock_outline, color: Colors.blueAccent),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12),
-                            borderSide: const BorderSide(color: Colors.blueAccent, width: 2),
-                          ),
-                          filled: true,
-                          fillColor: Colors.grey[50],
-                        ),
-                      ),
-                      const SizedBox(height: 32),
-                      
-                
-                      SizedBox(
-                        width: double.infinity,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            context.read<LoginCubit>().login(
-                              _userController.text,
-                              _passController.text,
-                            );
-                          },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.blueAccent,
-                            foregroundColor: Colors.white,
-                            padding: const EdgeInsets.symmetric(vertical: 16),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                            elevation: 4,
-                          ),
-                          child: const Text(
-                            "Agregar",
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
-                ),
+                  const SizedBox(height: 16),
+                  
+                  TextField(
+                    controller: _passController,
+                    obscureText: true,
+                    decoration: const InputDecoration(
+                      labelText: "Contraseña",
+                      prefixIcon: Icon(Icons.lock_outline, color: Colors.blue),
+                      border: OutlineInputBorder(),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.blue, width: 2),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 24),
+                  
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        context.read<LoginCubit>().login(
+                          _userController.text,
+                          _passController.text,
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.blue,
+                        foregroundColor: Colors.white,
+                        padding: const EdgeInsets.symmetric(vertical: 12),
+                      ),
+                      child: const Text(
+                        "Agregar",
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
