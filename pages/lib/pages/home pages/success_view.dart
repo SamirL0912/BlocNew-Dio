@@ -23,7 +23,6 @@ class SuccessView extends StatelessWidget {
         ),
         body: Column(
           children: [
-            // 🔹 Imagen que aparece al instante
             const SizedBox(height: 40),
             ClipRRect(
               borderRadius: BorderRadius.circular(16),
@@ -33,8 +32,6 @@ class SuccessView extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-
-            // 🔹 El Bloc solo controla la parte de la info (SuccessHome, Loading, Error)
             Expanded(
               child: BlocBuilder<HomeBloc, HomeState>(
                 builder: (context, state) {

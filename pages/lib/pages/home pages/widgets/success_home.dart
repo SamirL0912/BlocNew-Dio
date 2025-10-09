@@ -13,10 +13,7 @@ class SuccessHome extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Imagen estática (se muestra de inmediato)
             const SizedBox(height: 20),
-
-            // Aquí solo se reconstruye la parte de info
             BlocBuilder<HomeBloc, HomeState>(
               builder: (context, state) {
                 if (state is HomeLoading || state is HomeInitial) {
