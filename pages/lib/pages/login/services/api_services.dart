@@ -1,10 +1,12 @@
 import 'package:dio/dio.dart';
 
 class LoginService {
-  final Dio dio = Dio(BaseOptions(
-    connectTimeout: const Duration(seconds: 10),
-    receiveTimeout: const Duration(seconds: 10),
-  ));
+  final Dio dio = Dio(
+    BaseOptions(
+      connectTimeout: const Duration(seconds: 10),
+      receiveTimeout: const Duration(seconds: 10),
+    ),
+  );
 
   Future<bool> login(String username, String password) async {
     try {
@@ -20,8 +22,6 @@ class LoginService {
         return data["username"] == username && data["password"] == password;
       }
     } on DioException catch (e) {
-      // Log básico para depuración; el cubit/bloc puede mostrar un mensaje al usuario
-      // Usamos print para dejar constancia en la consola
       print('DioException en login: ${e.type} - ${e.message}');
       rethrow;
     } catch (e) {

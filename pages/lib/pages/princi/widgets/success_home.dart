@@ -26,26 +26,51 @@ class SuccessHome extends StatelessWidget {
                     ],
                   );
                 } else if (state is HomeSuccess) {
-                  return Column(
-                    children: [
-                      Text(
-                        "Partidos: ${state.partidos}",
-                        style: const TextStyle(fontSize: 18),
-                      ),
-                      Text(
-                        "Goles: ${state.goles}",
-                        style: const TextStyle(fontSize: 18),
-                      ),
-                      Text(
-                        "Asistencias: ${state.asistencias}",
-                        style: const TextStyle(fontSize: 18),
-                      ),
-                    ],
+                  return Container(
+                    padding: const EdgeInsets.all(20),
+                    margin: const EdgeInsets.symmetric(horizontal: 20),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      border: Border.all(color: Colors.grey, width: 1),
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.1),
+                          blurRadius: 5,
+                          offset: const Offset(0, 2),
+                        ),
+                      ],
+                    ),
+                    child: Column(
+                      children: [
+                        Text(
+                          "Partidos: ${state.partidos}",
+                          style: const TextStyle(fontSize: 18),
+                        ),
+                        Text(
+                          "Goles: ${state.goles}",
+                          style: const TextStyle(fontSize: 18),
+                        ),
+                        Text(
+                          "Asistencias: ${state.asistencias}",
+                          style: const TextStyle(fontSize: 18),
+                        ),
+                      ],
+                    ),
                   );
                 } else if (state is HomeFailure) {
-                  return Text(
-                    "Error: ${state.message}",
-                    style: const TextStyle(color: Colors.red),
+                  return Container(
+                    padding: const EdgeInsets.all(20),
+                    margin: const EdgeInsets.symmetric(horizontal: 20),
+                    decoration: BoxDecoration(
+                      color: Colors.red.shade50,
+                      border: Border.all(color: Colors.red, width: 1),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Text(
+                      "Error: ${state.message}",
+                      style: const TextStyle(color: Colors.red),
+                    ),
                   );
                 }
                 return const SizedBox();
