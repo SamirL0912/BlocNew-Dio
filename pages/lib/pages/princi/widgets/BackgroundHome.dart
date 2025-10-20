@@ -23,13 +23,8 @@ class _HeaderHomePainter extends CustomPainter {
           ).createShader(Rect.fromLTWH(0, 0, size.width, size.height));
 
     final path = Path();
-    path.lineTo(0, size.height * 0.6);
-    path.quadraticBezierTo(
-      size.width * 0.5,
-      size.height * 0.5,
-      size.width,
-      size.height * 0.6,
-    );
+    path.lineTo(0, size.height * 0.9);
+    path.quadraticBezierTo(size.width * 0.02, size.height * 0.8, size.width,size.height * 0.6);
     path.lineTo(size.width, 0);
 
     canvas.drawPath(path, lapiz);

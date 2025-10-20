@@ -33,13 +33,6 @@ class SuccessHome extends StatelessWidget {
                       color: Colors.white,
                       border: Border.all(color: Colors.grey, width: 1),
                       borderRadius: BorderRadius.circular(10),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.1),
-                          blurRadius: 5,
-                          offset: const Offset(0, 2),
-                        ),
-                      ],
                     ),
                     child: Column(
                       children: [

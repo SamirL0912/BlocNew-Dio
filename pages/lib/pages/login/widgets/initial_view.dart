@@ -19,7 +19,7 @@ class InitialLoginViewState extends State<InitialLoginView> {
     return Scaffold(
       body: Stack(
         children: [
-          const BackgroundLogin(),
+         BackgroundLogin(),
           Center(
             child: Padding(
               padding: const EdgeInsets.all(20),
