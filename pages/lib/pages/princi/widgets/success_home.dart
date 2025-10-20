@@ -30,7 +30,7 @@ class SuccessHome extends StatelessWidget {
                     padding: const EdgeInsets.all(20),
                     margin: const EdgeInsets.symmetric(horizontal: 20),
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: Color(0xFF1E3C72),
                       border: Border.all(color: Colors.grey, width: 1),
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -38,15 +38,15 @@ class SuccessHome extends StatelessWidget {
                       children: [
                         Text(
                           "Partidos: ${state.partidos}",
-                          style: const TextStyle(fontSize: 18),
+                          style: const TextStyle(fontSize: 18, color: Colors.white),
                         ),
                         Text(
                           "Goles: ${state.goles}",
-                          style: const TextStyle(fontSize: 18),
+                          style: const TextStyle(fontSize: 18, color: Colors.white),
                         ),
                         Text(
                           "Asistencias: ${state.asistencias}",
-                          style: const TextStyle(fontSize: 18),
+                          style: const TextStyle(fontSize: 18, color: Colors.white),
                         ),
                       ],
                     ),

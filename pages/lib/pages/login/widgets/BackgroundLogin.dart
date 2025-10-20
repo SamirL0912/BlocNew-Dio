@@ -49,7 +49,10 @@ class _BackgroundLoginPainter extends CustomPainter {
     path.close();
 
     canvas.drawPath(path, paint);
+
+    
   }
+
 
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) => false;

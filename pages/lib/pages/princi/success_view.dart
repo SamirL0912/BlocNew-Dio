@@ -34,7 +34,7 @@ class SuccessView extends StatelessWidget {
                 ClipRRect(
                   borderRadius: BorderRadius.circular(16),
                   child: Image.network(
-                    'https://cdn.resfu.com/img_data/players/medium/28185.jpg?size=340x&lossy=1',
+                    'https://assets.goal.com/images/v3/blt4af919f965d04df1/6c762af3969c53e9ce5018c338c9862fb1a2ab8d.jpg?auto=webp&format=pjpg&width=3840&quality=60',
                     height: 250,
                     fit: BoxFit.cover,
                   ),
