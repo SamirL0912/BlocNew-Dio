@@ -19,24 +19,23 @@ class _BackgroundLoginPainter extends CustomPainter {
     final paint =
         Paint()
           ..shader = const LinearGradient(
-            colors: [Color(0xFF1E3C72), Color(0xFF2A5298)],
+            colors: [Color(0xFF1E3C72), Color(0xFF1E3C72)],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ).createShader(Rect.fromLTWH(0, 0, size.width, size.height));
 
     final path = Path();
 
-    path.moveTo(0, size.height * 0.6);
     path.lineTo(0, size.height * 0.8);
     path.quadraticBezierTo(
-      size.width * 0.2,
-      size.height * 0.9,
+      size.width * 0.1,
+      size.height * 0.4,
       size.width * 0.4,
       size.height * 0.8,
     );
     path.quadraticBezierTo(
       size.width * 0.6,
-      size.height * 0.7,
+      size.height * 0.6,
       size.width * 0.8,
       size.height * 0.8,
     );
@@ -44,10 +43,9 @@ class _BackgroundLoginPainter extends CustomPainter {
       size.width,
       size.height * 0.9,
       size.width,
-      size.height * 0.6,
+      size.height * 0.1,
     );
     path.lineTo(size.width, 0);
-    path.lineTo(0, 0);
     path.close();
 
     canvas.drawPath(path, paint);

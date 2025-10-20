@@ -22,7 +22,7 @@ class SuccessView extends StatelessWidget {
             "Cristiano Dos Santos Aveiro",
             style: TextStyle(color: Colors.white),
           ),
-          centerTitle: true,
+          centerTitle: false,
           backgroundColor: Color(0xFF1E3C72),
         ),
         body: Stack(
@@ -34,7 +34,7 @@ class SuccessView extends StatelessWidget {
                 ClipRRect(
                   borderRadius: BorderRadius.circular(16),
                   child: Image.network(
-                    'https://s3.abcstatics.com/media/deportes/2018/07/10/cristiano-ronaldo-kNlH--620x349@abc.jpg',
+                    'https://cdn.resfu.com/img_data/players/medium/28185.jpg?size=340x&lossy=1',
                     height: 250,
                     fit: BoxFit.cover,
                   ),

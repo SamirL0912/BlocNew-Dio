@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pages/pages/princi/success_view.dart';
 import 'pages/login/inicial_view.dart';
 import 'pages/login/widgets/BackgroundLogin.dart';
 
@@ -18,7 +17,7 @@ class MyApp extends StatelessWidget {
         body: Stack(
           children: [
             BackgroundLogin(),
-            SafeArea(child: Center(child: SuccessView())),
+            SafeArea(child: Center(child: InicialView())),
           ],
         ),
       ),
