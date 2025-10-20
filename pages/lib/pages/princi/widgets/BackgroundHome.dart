@@ -33,21 +33,22 @@ class _HeaderHomePainter extends CustomPainter {
 
     canvas.drawPath(path, lapiz);
 
-    final lapiz2 = Paint();
-    lapiz2.color = Color.fromARGB(255, 255, 255, 255);
-    lapiz2.style = PaintingStyle.stroke;
-    lapiz2.strokeWidth = 10.0;
+    final lapizRelleno = Paint();
+    lapizRelleno.color = Colors.white.withOpacity(0.3);
+    lapizRelleno.style = PaintingStyle.fill;
 
     final linea1 = Path();
+    linea1.moveTo(0, 0);
     linea1.quadraticBezierTo(
       size.width * 0.2, 
       size.height * 0.1, 
       size.width * 0.3, 
       size.height * 1
-      );
+    );
+    linea1.lineTo(0, size.height);
+    linea1.lineTo(0, 0);
     
-    canvas.drawPath(linea1, lapiz2);
-
+    canvas.drawPath(linea1, lapizRelleno);
 
     final linea2 = Path();
     linea2.moveTo(size.width, 0);
@@ -56,9 +57,11 @@ class _HeaderHomePainter extends CustomPainter {
       size.height * 0.1, 
       size.width * 0.7, 
       size.height * 1
-      );
+    );
+    linea2.lineTo(size.width, size.height);
+    linea2.lineTo(size.width, 0);
     
-    canvas.drawPath(linea2, lapiz2);
+    canvas.drawPath(linea2, lapizRelleno);
   }
 
   @override

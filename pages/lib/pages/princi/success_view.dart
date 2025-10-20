@@ -19,7 +19,7 @@ class SuccessView extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: const Text(
-            "Cristiano Dos Santos Aveiro",
+            "Cristiano Ronaldo Dos Santos Aveiro",
             style: TextStyle(color: Colors.white),
           ),
           centerTitle: false,
