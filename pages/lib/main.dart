@@ -1,13 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pages/cubit/home_cubit.dart';
-import 'package:pages/services/home_service.dart';
-import 'package:pages/views/home.dart';
-import 'bloc/crear_bloc.dart';
-import 'bloc/crear_state.dart';
-import 'views/initial_view.dart';
-import 'views/loading_view.dart';
-import 'views/failed_view.dart';
+import 'pages/login/inicial_view.dart';
+import 'pages/login/widgets/BackgroundLogin.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,37 +11,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Bloc + Cubit Demo',
-      home: BlocProvider(
-        create: (_) => CrearBloc(),
-        child: BlocListener<CrearBloc, CrearState>(
-          listener: (context, state) {
-            if (state is CrearLoading) {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (_) => const LoadingView()),
-              );
-            } else if (state is CrearSuccess) {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder:
-                      (_) => BlocProvider(
-                        create: (_) => HomeCubit(HomeService()),
-                        child: const HomeView(),
-                      ),
-                ),
-              );
-            } else if (state is CrearFailure) {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (_) => const FailedView()),
-              );
-            }
-          },
-          child: const InitialView(),
+      home: Scaffold(
+        body: Stack(
+          children: [
+            BackgroundLogin(),
+            SafeArea(child: Center(child: InicialView())),
+          ],
         ),
       ),
     );
